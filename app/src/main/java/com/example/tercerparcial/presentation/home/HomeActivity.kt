@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.tercerparcial.data.repository.FakePlanRepository
 import com.example.tercerparcial.databinding.ActivityHomeBinding
 import com.example.tercerparcial.domain.usecase.GetPlansUseCase
+import android.content.Intent
 
 class HomeActivity : ComponentActivity() {
 
@@ -30,6 +31,11 @@ class HomeActivity : ComponentActivity() {
 
         binding.btnNext.setOnClickListener {
             binding.viewPager.currentItem = (binding.viewPager.currentItem + 1).coerceAtMost(adapter.itemCount - 1)
+        }
+
+        binding.btnSendSim.setOnClickListener {
+            val intent = Intent(this, SendSimActivity::class.java)
+            startActivity(intent)
         }
     }
 }
