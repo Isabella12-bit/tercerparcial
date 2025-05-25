@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tercerparcial.databinding.ItemPlanBinding
 import com.example.tercerparcial.domain.model.Plan
+import android.content.Intent
+import android.net.Uri
 
 class PlanAdapter(private val plans: List<Plan>) : RecyclerView.Adapter<PlanAdapter.PlanViewHolder>() {
 
@@ -15,6 +17,13 @@ class PlanAdapter(private val plans: List<Plan>) : RecyclerView.Adapter<PlanAdap
             binding.tvNewPrice.text = "Ahora: $${plan.newPrice}"
             binding.tvData.text = "${plan.dataGB}GB"
             binding.tvFeatures.text = plan.features.joinToString("\n")
+
+            binding.btnWhatsapp.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW)
+                val url = "https://wa.me/?text=${Uri.encode("Hola, UCB mobile, preciso su ayuda")}"
+                intent.data = Uri.parse(url)
+                binding.root.context.startActivity(intent)
+            }
         }
     }
 
